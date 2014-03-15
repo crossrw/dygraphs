@@ -159,6 +159,9 @@ DygraphCanvasRenderer.prototype._createIEClipArea = function() {
     if (area.w === 0 || area.h === 0) {
       return;
     }
+    // fix issue IE8 with negative value width and height
+    if (area.w < 0 || area.h < 0) return;
+    //
     var elem = document.createElement('div');
     elem.className = className;
     elem.style.backgroundColor = backgroundColor;
