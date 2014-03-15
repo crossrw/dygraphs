@@ -37,8 +37,9 @@ var createDivInRect = function(r) {
   div.style.position = 'absolute';
   div.style.left = r.x + 'px';
   div.style.top = r.y + 'px';
-  div.style.width = r.w + 'px';
-  div.style.height = r.h + 'px';
+  // fix issue IE8 with negative value width and height
+  if(r.w > 0) div.style.width = r.w + 'px'; else div.style.width = '0px';
+  if(r.h > 0) div.style.height = r.h + 'px'; else div.style.height = '0px';
   return div;
 };
 
